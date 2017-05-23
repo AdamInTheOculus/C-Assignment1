@@ -10,8 +10,8 @@ void _displaySubstance(char const *temperatureType, float temperature);
 void _displayCelciusSubstance(float temperature);
 void _displayFahrenheitSubstance(float temperature);
 void _displayKelvinSubstance(float temperature);
-float celciusToFahrenheit(float value);
-float celciusToKelvin(float value);
+inline float celciusToFahrenheit(float value);
+inline float celciusToKelvin(float value);
 
 #define WATER_CELCIUS 100
 #define MERCURY_CELCIUS 357
@@ -284,12 +284,12 @@ void _displayKelvinSubstance(float temperature)
     return;
 }
 
-float celciusToFahrenheit(float value)
+inline float celciusToFahrenheit(float value)
 {
     return (value * 1.8) + 32;
 }
 
-float celciusToKelvin(float value)
+inline float celciusToKelvin(float value)
 {
     return value + 273.15;
 }

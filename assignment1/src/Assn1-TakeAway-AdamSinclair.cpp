@@ -6,7 +6,7 @@ void  _displayMainMenu();
 void  _getFastFoodInput();
 bool  _validateMenuInput(char *input);
 bool  _validateYearInput(char *input);
-float _calculateFastFoodCharges(int year);
+inline float _calculateFastFoodCharges(int year);
 
 int main(int argc, char **argv)
 {
@@ -73,16 +73,20 @@ void _getFastFoodInput()
     printf("Enter a year greater than or equal to 2005.\nAny year earlier will stop the program.\n");
     printf(">> ");
 
+    // Get input from user
     fgets(buffer, sizeof(buffer), stdin);
     buffer[strcspn(buffer, "\n")] = 0;
 
+    // Convert to integer
     int year = atoi(buffer);
 
+    // If out of range, display error message and exit.
     if(year < 2005)
     {
         printf("Invalid year. Given year was before 2005. Exiting program.\n");
         exit(EXIT_FAILURE);
     }
+    // Otherwise run the calculation and display to screen.
     else
     {
         float foodCosts = _calculateFastFoodCharges(year);
@@ -92,7 +96,7 @@ void _getFastFoodInput()
     return;
 }
 
-float _calculateFastFoodCharges(int year)
+inline float _calculateFastFoodCharges(int year)
 {
     return (33.2 + (16.8 * (year - 2005)));
 }
