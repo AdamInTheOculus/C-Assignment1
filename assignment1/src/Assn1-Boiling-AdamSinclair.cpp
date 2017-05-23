@@ -10,6 +10,14 @@ void _displaySubstance(char const *temperatureType, float temperature);
 void _displayCelciusSubstance(float temperature);
 void _displayFahrenheitSubstance(float temperature);
 void _displayKelvinSubstance(float temperature);
+float celciusToFahrenheit(float value);
+float celciusToKelvin(float value);
+
+#define WATER_CELCIUS 100
+#define MERCURY_CELCIUS 357
+#define COPPER_CELCIUS 1187
+#define SILVER_CELCIUS 2193
+#define GOLD_CELCIUS 2660
 
 int main()
 {
@@ -158,32 +166,29 @@ void _displaySubstance(char const *temperatureType, float temperature)
 
 void _displayCelciusSubstance(float temperature)
 {
-    const int WATER = 100, MERCURY = 357, 
-        COPPER = 1187, SILVER = 2193, GOLD = 2660
-    ;
 
     // Water
-    if(temperature >= (WATER - (0.05 * WATER)) && temperature <= (WATER + (0.05 * WATER)))
+    if(temperature >= (WATER_CELCIUS - (0.05 * WATER_CELCIUS)) && temperature <= (WATER_CELCIUS + (0.05 * WATER_CELCIUS)))
     {
         printf("Identified substance: WATER.\n\n");
     }
     // Mercury
-    else if(temperature >= (MERCURY - (0.05 * MERCURY)) && temperature <= (MERCURY + (0.05 * MERCURY)))
+    else if(temperature >= (MERCURY_CELCIUS - (0.05 * MERCURY_CELCIUS)) && temperature <= (MERCURY_CELCIUS + (0.05 * MERCURY_CELCIUS)))
     {
         printf("Identified substance: MERCURY.\n\n");
     }
     // Copper
-    else if(temperature >= (COPPER - (0.05 * COPPER)) && temperature <= (COPPER + (0.05 * COPPER)))
+    else if(temperature >= (COPPER_CELCIUS - (0.05 * COPPER_CELCIUS)) && temperature <= (COPPER_CELCIUS + (0.05 * COPPER_CELCIUS)))
     {
         printf("Identified substance: COPPER.\n\n");
     }
     // Silver
-    else if(temperature >= (SILVER - (0.05 * SILVER)) && temperature <= (SILVER + (0.05 * SILVER)))
+    else if(temperature >= (SILVER_CELCIUS - (0.05 * SILVER_CELCIUS)) && temperature <= (SILVER_CELCIUS + (0.05 * SILVER_CELCIUS)))
     {
         printf("Identified substance: SILVER.\n\n");
     }
     // Gold
-    else if(temperature >= (GOLD - (0.05 * GOLD)) && temperature <= (GOLD + (0.05 * GOLD)))
+    else if(temperature >= (GOLD_CELCIUS - (0.05 * GOLD_CELCIUS)) && temperature <= (GOLD_CELCIUS + (0.05 * GOLD_CELCIUS)))
     {
         printf("Identified substance: GOLD.\n\n");
     }
@@ -197,8 +202,11 @@ void _displayCelciusSubstance(float temperature)
 
 void _displayFahrenheitSubstance(float temperature)
 {
-    const float WATER = 212, MERCURY = 674.6, 
-        COPPER = 2168.6, SILVER = 3979.4, GOLD = 4820
+    const float WATER = celciusToFahrenheit(WATER_CELCIUS), 
+                MERCURY = celciusToFahrenheit(MERCURY_CELCIUS), 
+                COPPER = celciusToFahrenheit(COPPER_CELCIUS), 
+                SILVER = celciusToFahrenheit(SILVER_CELCIUS),
+                GOLD = celciusToFahrenheit(GOLD_CELCIUS)
     ;
 
     // Water
@@ -236,8 +244,11 @@ void _displayFahrenheitSubstance(float temperature)
 
 void _displayKelvinSubstance(float temperature)
 {
-    const float WATER = 373.15, MERCURY = 630.15, 
-        COPPER = 1460.15, SILVER = 2466.15, GOLD = 2933.15
+    const float WATER = celciusToKelvin(WATER_CELCIUS), 
+                MERCURY = celciusToKelvin(MERCURY_CELCIUS), 
+                COPPER = celciusToKelvin(COPPER_CELCIUS), 
+                SILVER = celciusToKelvin(SILVER_CELCIUS),
+                GOLD = celciusToKelvin(GOLD_CELCIUS)
     ;
 
     // Water
@@ -271,4 +282,14 @@ void _displayKelvinSubstance(float temperature)
     }
 
     return;
+}
+
+float celciusToFahrenheit(float value)
+{
+    return (value * 1.8) + 32;
+}
+
+float celciusToKelvin(float value)
+{
+    return value + 273.15;
 }
